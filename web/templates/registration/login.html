@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% load static %}
+{% block login %}
+<head>
+  <link rel="stylesheet" href="{% static "style/css/bootstrap.css" %}">
+</head>
+<body style="min-height: 4000px; margin-bottom: 100px; clear: both;">
+  <h1><b><center>Eagle Eye</center></b></h1>
+  <div style="margin-right: 35%; margin-left: 35%;">
+    <img src="{% static "images/logo.png" %}" alt="Eagle Eye Logo" class="center-logo" style="width: 75%;">
+  </div>
+  <div class="form-group" style="margin-right: 20%; margin-left: 20%;">
+    <h2 class="center-left"><b>Login</b></h2>
+      <form method="post" class="center-left">
+        {% csrf_token %}
+        <!--{{ form.as_p }}-->
+        <!--[ADH: had to do this to allow us to style the form boxes and text]]-->
+        {% load widget_tweaks %}
+            {% if form.non_field_errors %}
+              <div class="alert alert-warning"></a>
+                <ul class='form-errors'>
+                    {% for error in form.non_field_errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+        
+        <b>Username</b>
+        <p>
+          {{ form.username | add_class:"form-control" }}
+          {{ form.username.errors }}
+        </p>
+        <b>Password</b>
+        <p>
+          {{ form.password | add_class:"form-control" }}
+          {{ form.password.errors }}
+        </p>
+        <button class="btn2 btn2-primary" type="submit">Login</button>
+      </form>
+  </div>
+</body>
+<div class="footer">
+    <p></p>
+    <p>Team 10 - EagleEye for NAVSEA</p>
+</div>
+{% endblock %}

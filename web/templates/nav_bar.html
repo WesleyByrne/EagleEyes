@@ -1,0 +1,17 @@
+{%load static %}
+<!-- Start Navbar -->
+<nav class="navbar navbar-default" style="width: 100%;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#">
+                    <img src="{% static 'images/logo.png' %}" style="width: 13%;">
+                    <font color="black" style="text-align: center;"><b>Eagle Eyes</b></font>
+                </a>
+            </div>
+            <p><b>Logged In:</b> {{ user.username }}</p>
+            <button class="btn2 btn2-primary" onclick="location.href='{% url 'logout' %}'">
+                <font color="white">Logout</font>
+            </button>
+        </div>
+    </nav>
+    <!-- End Navbar -->

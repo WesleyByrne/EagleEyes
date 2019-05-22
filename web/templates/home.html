@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<meta name="selected_date" content="{{ selected_date }}"/>
+<link rel="stylesheet" href="{% static "style/css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "style/css/style.css" %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+{% endblock %}
+{% block title %}Eagle Eyes{% endblock %}
+{% block dashboard %}
+  {% if user.is_authenticated %}
+<body style="padding: 0px">
+  <div style="position: relative;
+      overflow: hidden;
+      height: 100vh;
+      width: 100%;">
+    {% include 'nav_bar.html'%}
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav">
+          {%include 'calendar.html'%}
+          {%include 'list_clips.html' %}
+        </div>
+        <div class="col-sm-9">
+          {%include 'media_player.html' %}
+        </div>
+      </div>
+    </div>
+    <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+    <script src="{% static "js/jquery.supercal.js" %}"></script>
+    <script src="{% static "js/bootstrap.js" %}"></script>
+    <script src="{% static "js/jquery.nicescroll.min.js" %}"></script>
+    <script src="{% static "js/plugins.js" %}"></script>
+  </div>
+</body>
+{% else %}
+<meta http-equiv="refresh" content="0; {% url 'login' %}" />
+{% endif %}
+{% block list_clips %}{% endblock %}
+{% endblock %}

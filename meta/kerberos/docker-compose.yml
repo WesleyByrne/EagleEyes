@@ -1,0 +1,12 @@
+version: '3'
+services:
+  kerberos:
+    image: "kerberos/kerberos"
+    ports:
+      - "1234:80"
+    devices:
+      - "/dev/video0:/dev/video0"
+    volumes:
+      - "./capture:/etc/opt/kerberosio/capture"
+      - "./kerberos_config:/etc/opt/kerberosio/config"
+      - "./web_config:/var/www/web/config"

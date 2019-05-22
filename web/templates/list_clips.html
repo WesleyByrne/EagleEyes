@@ -1,0 +1,20 @@
+<div class="table-container">
+    <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Anomaly</th>
+          </tr>
+        </thead>
+        <tbody class="tbody-list">
+                {% for clip in clips %}
+                    <tr class="clip-row" data-filename="/capture/{{ clip.file_name }}">
+                        <td> {{ clip.timestamp |date:"H:i:s" }} </td>
+                        <td> {{ clip.duration.seconds  }} </td>
+                        <td> {{ clip.anomaly | floatformat:4 }} </td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>
